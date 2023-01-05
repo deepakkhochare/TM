@@ -1,0 +1,84 @@
+{% extends 'structure.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Tasks</title>
+{% endblock %}
+{% block content %}
+    <form method="POST" >
+        <hr style="height:3px" color="Aqua" />
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+            <div class="navbar-nav">
+                <a class="navbar navbar-light" href="{% url 'addtask_url' %}">Add Tasks</a>
+                <a class="navbar navbar-light" href="{% url 'signup_url' %}">View Tasks</a>
+            </div>
+        </nav>
+        <hr style="height:3px" color="Aqua" />
+        <div class="container ">
+            {% csrf_token %}
+<!--        {{ form.as_p }}-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        <label for="location" style="display:block;">Location </label>
+                        <input class="form-control" type="text" id="location" name="location">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="task" style="display:block;">Task</label>
+                        <input class="form-control" type="text" id="task" name="task">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        <label for="desc" style="display:block;">Description</label>
+                        <input class="form-control" type="text" id="desc" name="desc" >
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="stdt" style="display:block;">Start Date</label>
+                        <input class="form-control" type="date" id="stdt" name="start_date">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        <label for="estdt" style="display:block;">Estimated Completion Date</label>
+                        <input class="form-control" type="date" id="estdt" name="estimated_date" >
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="endt" style="display:block;">End Date</label>
+                        <input class="form-control" type="date" id="endt" name="end_date">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        <label for="comme" style="display:block;">Comments</label>
+                        <textarea class="form-control" id="comme" name="comments" ></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="comp" style="display:block;">Company</label>
+                        <input class="form-control" type="text" id="comp" name="company" value="{{company}}">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <br>
+    <center><input type="submit" value="Submit" class="btn btn-primary btn-lg"></center>
+    </form>
+{% endblock %}

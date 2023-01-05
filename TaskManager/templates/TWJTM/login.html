@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Signup</title>
+{% endblock %}
+{% block content %}
+    <form method="POST" >
+        <div class="container">
+            {% csrf_token %}
+        <h6 style="color:Red">{{ msg }}</h6>
+        <br>
+        <label for="un">Enter UserName</label>
+        <input type="text" id="un" name="un" class="form-control" autocomplete="off" value="admin">
+        <br>
+        <br>
+        <label for="pw">Enter Password</label>
+        <input type="password" id="pw" name="pw" class="form-control" value="admin">
+        <br>
+        <br>
+            <input type="submit" value="Login" class="btn btn-primary btn-lg">
+        </div>
+    </form>
+{% endblock %}

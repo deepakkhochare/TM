@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Signup</title>
+{% endblock %}
+{% block content %}
+    <form action="{% url 'signup_url' %}"   method="POST" enctype="multipart/form-data">
+        {{msg}}
+        <div class="container">
+            {% csrf_token %}
+            <br>
+            <input type="text" id="username" name="username" class="form-control" autocomplete="off" placeholder="User Name"><br>
+            <input type="password" id="password" name="password" class="form-control" autocomplete="off" placeholder="Password"><br>
+            <input type="email" id="emailid" name="emailid" class="form-control" autocomplete="off" placeholder="Email Id"><br>
+            <input type="text" id="mobile" name="mobile" class="form-control" autocomplete="off" placeholder="Mobile Number"><br>
+            <input type="text" id="company" name="company" class="form-control" autocomplete="off" placeholder="Company" value="{{company}}"><br>
+            <input type="text" id="caption" name="caption" class="form-control" autocomplete="off" placeholder="Photo Name"><br>
+            <input type="file" id="image" name="image" class="form-control" autocomplete="off" placeholder="Upload File">
+            <br>
+            <input type="submit" value="sign Up" class="btn btn-sucess btn-lg">
+        </div>
+    </form>
+{% endblock %}
