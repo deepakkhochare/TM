@@ -1,0 +1,17 @@
+{% extends 'structure.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Tasks</title>
+{% endblock %}
+{% block content %}
+    <form method="POST" >
+        <hr style="height:3px" color="Aqua" />
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+            <div class="navbar-nav">
+                <a class="navbar navbar-light" href="{% url 'addData_url' 'Karvenagar' %}">Add Data</a>
+                <a class="navbar navbar-light" href="{% url 'viewdata_url' %}">View Data</a>
+            </div>
+        </nav>
+        <hr style="height:3px" color="Aqua" />
+    </form>
+{% endblock %}

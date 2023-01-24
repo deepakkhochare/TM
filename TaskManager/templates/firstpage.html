@@ -12,14 +12,14 @@
 </head>
 <body onload="function1()" class="bg bg-default">
     <center>
-    <img src="/media/images/TWJIT.jpg" style="width:375px;height:70px; ">
-    <h4 style="color:Red"> TASK MANAGEMENT SYSTEM </h4></center>
+    <img src="/media/images/twjit.jpg" style="width:375px;height:70px; ">
+    <h4 style="color:Red"> Data </h4></center>
     <hr style="height:3px" color="Aqua" />
-    <a href="{% url 'base_url' 'infra' %}">
-        <img src="/media/images/infra.jpg" style="width:175px;height:175px;border-radius: 50%;">
+    <a href="{% url 'karvenagar_url' 'karvenagar' %}">
+        <img src="/media/images/Karvenagar.jpg" style="width:150px;height:100px;border-radius: 50%;">
     </a>
-    <a href="{% url 'base_url' 'tbc' %}">
-        <img src="/media/images/tbc.jpg" style="width:175px;height:175px;border-radius: 50%;">
+    <a href="{% url 'tbc_url' 'tbc' %}">
+        <img src="/media/images/tbc.jpg" style="width:150px;height:100px;border-radius: 50%;">
     </a>
 
     {% block content %}

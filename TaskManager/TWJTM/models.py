@@ -30,4 +30,27 @@ class taskData(models.Model):
     def __str__(self):
         return self.task
 
+class InvData(models.Model):
+    inv_id=models.IntegerField(primary_key=True)
+    inv_name=models.CharField(max_length=80)
+    inv_address=models.CharField(max_length=100)
+    mobile=models.CharField(max_length=20)
+    email=models.EmailField(max_length=50)
+    aadhar=models.CharField(max_length=20)
+    pan=models.CharField(max_length=20)
+    account_no=models.CharField(max_length=20)
+    ifsc=models.CharField(max_length=15)
+    bank_name=models.CharField(max_length=50)
+    nominee_name=models.CharField(max_length=50)
+    nominee_aadhar=models.CharField(max_length=50)
+    aadhar_front=models.ImageField(upload_to='images/',null=True)
+    aadhar_back=models.ImageField(upload_to='images/',null=True)
+    pan_front=models.ImageField(upload_to='images/',null=True)
+    nominee_aadhar_front=models.ImageField(upload_to='images/',null=True)
+    reference_name=models.CharField(max_length=50)
+    amount=models.FloatField()
+    company=models.CharField(max_length=100,null=True)
+
+    def __str__(self):
+        return self.aadhar_front
 

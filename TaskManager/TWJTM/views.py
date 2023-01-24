@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .forms import tmUsersForm,taskForm
-from .models import tmUsersData
+from .models import tmUsersData,InvData
 from sqlalchemy import create_engine
 import pandas as pd
 
@@ -11,29 +11,22 @@ def firstpageView(request):
     context={}
     return render(request,template_name,context)
 
-def baseView(request,company):
-    template_name='base.html'
+def karvenagarView(request,company):
+    template_name='karvenagar.html'
     global com
     com=company
-    if company=='infra':
-        context = {'company':'TWJ INFRASTRUCTURE PVT.LTD.'}
+    if company=='karvenagar':
+        context = {'company':'TWJ Karvenagar, Pune'}
         return render(request,template_name,context)
     if company=='tbc':
         context = {'company':'TWJ BUSINESS CONSULTING PVT.LTD.'}
         return render(request,template_name,context)
-
     context={}
     return render(request,template_name,context)
 
-def loginView(request):
+def loginView(request,company):
     form = tmUsersForm()
     template_name='TWJTM/login.html'
-    global company
-    company=''
-    if com=='infra':
-        company='TWJ INFRASTRUCTURE PVT.LTD.'
-    if com=='tbc':
-        company='TWJ BUSINESS CONSULTING PVT.LTD.'
     context={'form':form,'company':company}
 
     if request.method=="POST":
@@ -41,13 +34,14 @@ def loginView(request):
         un = request.POST.get('un')
         my_conn = create_engine("mysql+mysqldb://root:new123@localhost/twjtm")
         conn = my_conn.connect()
+
         query = "select * from twjtm_tmusersdata where username='" + un + "' and company='" + company + "'"
         my_data = pd.read_sql(query, conn)
         conn.close()
         if len(my_data)==1:
             data=tmUsersData.objects.filter(username=un,company=company)
             context={'data':data,'username':un,'msg':'Login Successful','company':company}
-            return render(request,'tasksystem.html',context)
+            return render(request,'TWJTM/AddData.html',context)
         else:
             template_name = 'TWJTM/login.html'
             context = {'form':form,'msg':'Invalid Login','company':company}
@@ -121,3 +115,14 @@ def addtaskView(request):
 
     return render(request, template_name, context)
 
+def addDataView(request,company):
+    template_name='TWJTM/login.html'
+    context={'company':company}
+    return(request,template_name,context)
+
+
+
+def viewDataView(request,company):
+    template_name='TWJTM/AddInvestor.html'
+    context={'company':company}
+    return(request,template_name,context)
